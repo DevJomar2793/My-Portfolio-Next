@@ -46,6 +46,13 @@ export default function Projects() {
       color: "from-orange-500/20 to-red-500/20",
     },
     {
+      title: "Adamos Fresh Eggs Project",
+      tech: ["Next.js"],
+      desc: "Adamos Fresh Eggs Landing Page",
+      link: "https://afe-web-app.vercel.app/",
+      color: "from-blue-500/20 to-cyan-500/20",
+    },
+    {
       title: "Photobooth System",
       tech: ["Vue.js", "FastAPI"],
       desc: "Interactive Photo Booth",
