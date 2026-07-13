@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createPortal } from "react-dom";
 
 const ExternalLinkIcon = () => (
@@ -23,11 +23,6 @@ const ExternalLinkIcon = () => (
 export default function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleCloseModal = () => {
     setIsClosing(true);
@@ -116,14 +111,18 @@ export default function Projects() {
             >
               <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
               {proj.link ? (
-                <iframe
-                  src={proj.link}
-                  title={`${proj.title} Preview`}
-                  className="w-full h-full absolute inset-0 border-none pointer-events-none opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform origin-center"
-                  loading="lazy"
-                  scrolling="no"
-                  tabIndex={-1}
-                />
+                <>
+                  <iframe
+                    src={proj.link}
+                    title={`${proj.title} interactive preview`}
+                    className="absolute inset-0 h-full w-full border-0 bg-white opacity-90 transition-opacity duration-500 group-hover:opacity-100"
+                    loading="lazy"
+                    allowFullScreen
+                  />
+                  <span className="pointer-events-none absolute bottom-3 left-3 z-20 rounded-full border border-white/10 bg-black/70 px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-white/80 backdrop-blur-md">
+                    Interactive preview
+                  </span>
+                </>
               ) : (
                 <span className="text-white/30 font-bold tracking-widest text-2xl uppercase mix-blend-overlay group-hover:scale-110 transition-transform duration-700 relative z-0">
                   Project Demo
@@ -136,15 +135,17 @@ export default function Projects() {
                 <h4 className="text-2xl font-bold text-white group-hover:text-violet-400 transition-colors">
                   {proj.title}
                 </h4>
-                <a
-                  href={proj.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors bg-white/5 p-3 rounded-full cursor-pointer z-20 hover:scale-110 hover:bg-violet-600 shadow-sm"
-                  aria-label="View Project"
-                >
-                  <ExternalLinkIcon />
-                </a>
+                {proj.link && (
+                  <a
+                    href={proj.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors bg-white/5 p-3 rounded-full cursor-pointer z-20 hover:scale-110 hover:bg-violet-600 shadow-sm"
+                    aria-label={`Open ${proj.title} in a new tab`}
+                  >
+                    <ExternalLinkIcon />
+                  </a>
+                )}
               </div>
               <p className="text-gray-300 font-light mb-6">{proj.desc}</p>
 
@@ -204,7 +205,6 @@ export default function Projects() {
 
       {/* Games Modal */}
       {isModalOpen &&
-        mounted &&
         createPortal(
           <div
             className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
