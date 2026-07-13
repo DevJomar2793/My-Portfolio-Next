@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <body className="min-h-screen overflow-x-hidden bg-[#0a0a0b] font-sans text-gray-200">
+      <body className="min-h-screen overflow-x-hidden bg-[#07090e] font-sans text-slate-200">
         <div className="relative z-10 flex min-h-screen flex-col">{children}</div>
       </body>
     </html>
