@@ -27,6 +27,13 @@ const projects: Project[] = [
     accent: "from-violet-300/20 to-violet-500/5",
   },
   {
+    title: "887 Cafe",
+    tech: ["Next.js", "PostgreSQL", "FastAPI"],
+    desc: "A full-stack coffee shop application for managing orders and inventory.",
+    link: "887-cafe-next.vercel.app",
+    accent: "from-violet-300/20 to-violet-500/5",
+  },
+  {
     title: "Photobooth System",
     tech: ["Vue.js", "FastAPI"],
     desc: "An interactive web-based photo booth experience.",
