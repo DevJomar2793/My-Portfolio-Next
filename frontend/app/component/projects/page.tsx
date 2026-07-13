@@ -25,6 +25,7 @@ export default function Projects() {
   const [open, setOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
 
+<<<<<<< HEAD
   useEffect(() => {
     if (!open) return;
     document.body.style.overflow = "hidden";
@@ -48,6 +49,74 @@ export default function Projects() {
       previous?.focus();
     };
   }, [open]);
+=======
+  const handleCloseModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsModalOpen(false);
+      setIsClosing(false);
+    }, 280);
+  };
+
+  const projects = [
+    {
+      title: "SupahBowl Project",
+      tech: ["Next.js"],
+      desc: "Food Website",
+      link: "https://supah-bowl-project.vercel.app/",
+      color: "from-orange-500/20 to-red-500/20",
+    },
+    {
+      title: "Adamos Fresh Eggs Project",
+      tech: ["Next.js"],
+      desc: "Adamos Fresh Eggs Landing Page",
+      link: "https://afe-web-app.vercel.app/",
+      color: "from-blue-500/20 to-cyan-500/20",
+    },
+    // {
+    //   title: "887 Cafe Project",
+    //   tech: ["Next.js", "FastAPI", "PostgreSQL"],
+    //   desc: "887 Cafe Landing Page",
+    //   link: "https://887-cafe-next.vercel.app/",
+    //   color: "from-amber-500/20 to-orange-500/20",
+    // },
+    {
+      title: "Photobooth System",
+      tech: ["Vue.js", "FastAPI"],
+      desc: "Interactive Photo Booth",
+      link: "https://photobooth-app-omega.vercel.app/",
+      color: "from-blue-500/20 to-cyan-500/20",
+    },
+    {
+      title: "SCA Sitemap",
+      tech: ["Vue.js", "FastAPI"],
+      desc: "Dynamic Sitemap Generator",
+      link: "https://sca-sitemap-vue.vercel.app/",
+      color: "from-violet-500/20 to-fuchsia-500/20",
+    },
+    {
+      title: "SCA Hardware Inventory",
+      tech: ["Vue.js", "FastAPI"],
+      desc: "Comprehensive Inventory Management",
+      link: "https://sca-hardware-inventory-vue.vercel.app/",
+      color: "from-emerald-500/20 to-teal-500/20",
+    },
+    {
+      title: "Lawfirm App",
+      tech: ["Next.js"],
+      desc: "Lawfirm Client Portal",
+      link: "https://lawfirm-app-olive.vercel.app",
+      color: "from-gray-500/20 to-teal-500/20",
+    },
+    {
+      title: "Project Management System",
+      tech: ["Next.js", "FastAPI", "PostgreSQL"],
+      desc: "Project Is Under Development",
+      // link: "https://project-management-system-next-six.vercel.app/",
+      color: "from-purple-500/20 to-violet-500/20",
+    },
+  ];
+>>>>>>> dev
 
   return (
     <section id="projects" className="py-20 md:py-28">
