@@ -1,107 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const navItems = ["About", "Skills", "Tools", "Projects", "Contact"];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState("");
 
-  const navItems = ["About", "Skills", "Tools", "Projects", "Contact"];
+  useEffect(() => {
+    const sections = navItems.map((item) => document.getElementById(item.toLowerCase())).filter(Boolean) as HTMLElement[];
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && setActive(entry.target.id)),
+      { rootMargin: "-25% 0px -65%" },
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    const close = (event: KeyboardEvent) => event.key === "Escape" && setIsOpen(false);
+    window.addEventListener("keydown", close);
+    return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", close); };
+  }, [isOpen]);
 
   return (
-    <header className="fixed top-0 w-full z-50 transition-all duration-300 glass border-b border-white/5">
-      <nav className="max-w-6xl mx-auto flex justify-between items-center p-5 px-6">
-        <a
-          href="#"
-          className="text-2xl font-bold tracking-tighter text-white hover:text-violet-400 transition-colors z-50 relative"
-        >
-          Jomar<span className="text-violet-500">.</span>
-        </a>
-        <ul className="hidden md:flex gap-8 text-sm font-medium">
-          {navItems.map((item) => (
-            <li key={item}>
-              <a
-                href={`#${item.toLowerCase()}`}
-                className="relative text-gray-300 hover:text-white transition-colors group py-2"
-              >
-                {item}
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-violet-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
-              </a>
-            </li>
-          ))}
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0a0a0b]/90 backdrop-blur-xl">
+      <nav aria-label="Primary navigation" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-6">
+        <a href="#" className="text-lg font-bold tracking-tight text-white transition-transform duration-300 hover:scale-[1.03]">Jomar<span className="text-violet-400">.</span></a>
+        <ul className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => { const id = item.toLowerCase(); return (
+            <li key={item}><a href={`#${id}`} aria-current={active === id ? "location" : undefined} className={`rounded-lg px-4 py-2 text-sm transition ${active === id ? "bg-white/[.07] text-white" : "text-gray-400 hover:text-white"}`}>{item}</a></li>
+          ); })}
         </ul>
-
-        {/* Mobile Menu Button Wrapper */}
-        <button
-          className="md:hidden text-gray-300 hover:text-white transition-colors z-50 relative"
-          aria-label="Toggle menu"
-          onClick={toggleMenu}
-        >
-          {isOpen ? (
-            <svg
-              width="26"
-              height="26"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transform transition-transform duration-300 rotate-90"
-            >
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          ) : (
-            <svg
-              width="26"
-              height="26"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transform transition-transform duration-300 hover:scale-110"
-            >
-              <line x1="4" x2="20" y1="12" y2="12" />
-              <line x1="4" x2="20" y1="6" y2="6" />
-              <line x1="4" x2="20" y1="18" y2="18" />
-            </svg>
-          )}
-        </button>
+        <button type="button" aria-expanded={isOpen} aria-controls="mobile-menu" aria-label={isOpen ? "Close menu" : "Open menu"} onClick={() => setIsOpen(!isOpen)} className="interactive-button grid size-10 place-items-center rounded-lg border border-white/10 text-gray-300 md:hidden"><span className={`text-xl transition-transform duration-300 ${isOpen ? "rotate-90" : "rotate-0"}`} aria-hidden="true">{isOpen ? "×" : "☰"}</span></button>
       </nav>
-
-      {/* Mobile Menu Dropdown */}
-      <div
-        className={`md:hidden absolute top-full left-0 w-full glass-card border-t border-white/5 transition-all duration-500 ease-in-out overflow-hidden shadow-2xl backdrop-blur-3xl ${
-          isOpen ? "max-h-screen opacity-100 py-12" : "max-h-0 opacity-0 py-0"
-        }`}
-      >
-        <ul className="flex flex-col items-center gap-8">
-          {navItems.map((item, idx) => (
-            <li
-              key={item}
-              className={`transform transition-all duration-500 delay-${idx * 100} ${
-                isOpen
-                  ? "translate-y-0 opacity-100"
-                  : "-translate-y-4 opacity-0"
-              }`}
-              style={{ transitionDelay: `${isOpen ? idx * 75 : 0}ms` }}
-            >
-              <a
-                href={`#${item.toLowerCase()}`}
-                className="text-2xl font-medium text-gray-300 hover:text-white hover:tracking-widest transition-all duration-300 hover:text-gradient"
-                onClick={() => setIsOpen(false)}
-              >
-                {item}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div id="mobile-menu" className={`absolute inset-x-0 top-full origin-top border-b border-white/10 bg-[#121214] transition-all duration-300 md:hidden ${isOpen ? "visible translate-y-0 scale-y-100 opacity-100" : "invisible -translate-y-2 scale-y-95 opacity-0"}`}>
+        <ul className="p-4">{navItems.map((item) => <li key={item}><a href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)} className="flex min-h-12 items-center rounded-lg px-4 text-gray-300 hover:bg-white/5 hover:text-white">{item}</a></li>)}</ul>
       </div>
     </header>
   );

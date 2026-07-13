@@ -1,59 +1,26 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center text-center pt-20 px-4">
-      <div className="flex flex-col items-center z-10">
-        <div className="relative group mb-8">
-          {/* Glowing Aura Effect */}
-          <div className="absolute -inset-2 bg-linear-to-r from-violet-600 to-blue-600 rounded-full blur-lg opacity-20 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://github.com/DevJomar2793.png"
-            alt="Jomar's Profile"
-            className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full border-2 border-white/10 shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:rotate-3"
-          />
-        </div>
-
-        <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
-          Hi, I&apos;m <span className="text-gradient">Jomar</span> 👋
-        </h2>
-        <p className="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl font-light leading-relaxed">
-          QA Tester &amp;{" "}
-          <span className="text-white font-medium">
-            Aspiring AI-Assisted Full Stack Web Developer
-          </span>
-          . I build dynamic web applications with modern tech.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <a
-            href="#projects"
-            className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white transition-all duration-200 bg-violet-600 border border-transparent rounded-full shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:bg-violet-500 hover:shadow-[0_0_25px_rgba(124,58,237,0.5)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-600 focus:ring-offset-gray-900 overflow-hidden"
-          >
-            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-linear-to-b from-transparent via-transparent to-black"></span>
-            <span className="relative">View Projects</span>
-            <svg
-              className="relative w-5 h-5 ml-2 transition-transform group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              ></path>
-            </svg>
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white transition-all duration-200 glass rounded-full hover:bg-white/10 focus:outline-none"
-          >
-            Contact Me
-          </a>
+    <section className="hero-stage relative mx-auto grid min-h-screen max-w-6xl items-center gap-14 overflow-hidden px-5 pb-20 pt-28 md:grid-cols-[1.2fr_.8fr] md:px-6">
+      <div aria-hidden="true" className="hero-orb hero-orb-one" />
+      <div aria-hidden="true" className="hero-orb hero-orb-two" />
+      <div className="hero-copy relative z-10">
+        <div className="mb-7 flex w-fit items-center gap-3 rounded-full border border-emerald-400/20 bg-emerald-400/5 px-4 py-2 text-xs font-medium text-emerald-300"><span className="status-dot" />Available for opportunities</div>
+        <p className="mb-4 text-sm font-semibold text-violet-400">Hello, I&apos;m Jomar Cerrado</p>
+        <h1 className="max-w-3xl text-5xl font-bold leading-[1.02] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">QA tester and <span className="hero-accent">full stack developer.</span></h1>
+        <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-400 md:text-xl">I combine quality assurance experience with modern web development to build reliable, thoughtful digital products.</p>
+        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a href="#projects" className="interactive-button inline-flex min-h-12 items-center justify-center rounded-lg bg-violet-500 px-6 text-sm font-semibold text-white hover:bg-violet-400">View projects <span className="button-arrow ml-2">→</span></a>
+          <a href="#contact" className="interactive-button inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 px-6 text-sm font-semibold text-gray-200 hover:bg-white/5">Contact me</a>
         </div>
       </div>
+      <div className="hero-portrait relative z-10 mx-auto aspect-square w-full max-w-sm rounded-3xl">
+        <div className="portrait-float relative size-full overflow-hidden rounded-3xl border border-white/10 bg-[#121214] p-3 shadow-2xl">
+          <div className="relative size-full overflow-hidden rounded-2xl"><Image src="https://github.com/DevJomar2793.png" alt="Portrait of Jomar Cerrado" fill sizes="(max-width: 768px) 90vw, 384px" className="object-cover transition-transform duration-700 hover:scale-[1.025]" priority /></div>
+        </div>
+      </div>
+      <a href="#about" aria-label="Scroll to About section" className="scroll-cue absolute bottom-7 left-1/2 z-10 -translate-x-1/2 text-gray-500 transition-colors hover:text-violet-300"><span aria-hidden="true">↓</span></a>
     </section>
   );
 }

@@ -1,38 +1,29 @@
-const CodeIcon = () => <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-violet-400 mb-4"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>;
-const DatabaseIcon = () => <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400 mb-4"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>;
-const GlobeIcon = () => <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-violet-400 mb-4"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>;
+const groups = [
+  { number: "01", title: "Frontend", skills: ["HTML5", "CSS / Tailwind", "JavaScript", "TypeScript", "Next.js", "Vue.js"] },
+  { number: "02", title: "Backend & Data", skills: ["FastAPI", "MySQL", "SQLite", "PostgreSQL"] },
+  { number: "03", title: "Quality", skills: ["QA Testing", "API Testing", "Debugging", "Reliable UX"] },
+];
 
 export default function Skills() {
-  const skills = [
-    { name: "HTML5", icon: <GlobeIcon /> },
-    { name: "CSS/Tailwind", icon: <CodeIcon /> },
-    { name: "JavaScript", icon: <CodeIcon /> },
-    { name: "TypeScript", icon: <CodeIcon /> },
-    { name: "Next.js", icon: <GlobeIcon /> },
-    { name: "Vue.js", icon: <GlobeIcon /> },
-    { name: "FastAPI", icon: <CodeIcon /> },
-    { name: "MySQL/SQLite", icon: <DatabaseIcon /> },
-  ];
-
   return (
-    <section id="skills" className="py-16 md:py-24 relative z-10 w-full bg-[#121420]/80 border-y border-white/5 backdrop-blur-xl">
-      <div className="max-w-6xl mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold tracking-tight mb-4 text-white">Technical Arsenal</h3>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">Technologies and tools I use to build robust and scalable applications</p>
+    <section id="skills" className="py-20 md:py-28">
+      <div data-reveal className="mx-auto max-w-6xl px-5 md:px-6">
+        <span className="section-label">Skills</span>
+        <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <h2 className="max-w-xl text-3xl font-bold tracking-tight text-white md:text-4xl">A practical stack for reliable products.</h2>
+          <p className="max-w-md text-gray-400">Technologies I use across the product lifecycle, from testing an API to shipping the interface.</p>
         </div>
-        
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
-          {skills.map((skill, idx) => (
-            <div 
-              key={idx} 
-              className="glass p-6 rounded-2xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(124,58,237,0.15)] hover:border-violet-500/30 group"
-            >
-              <div className="transform transition-transform duration-300 group-hover:scale-110">
-                {skill.icon}
+        <div className="grid gap-4 lg:grid-cols-3">
+          {groups.map((group) => (
+            <article data-reveal-item key={group.title} className="rounded-2xl border border-white/10 bg-[#121214] p-6 transition duration-300 hover:-translate-y-1 hover:border-violet-400/30 md:p-7">
+              <div className="mb-7 flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-white">{group.title}</h3>
+                <span className="text-sm font-medium text-violet-400">{group.number}</span>
               </div>
-              <span className="text-gray-200 font-medium group-hover:text-white transition-colors">{skill.name}</span>
-            </div>
+              <ul className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => <li key={skill} className="rounded-full border border-white/10 bg-white/[.03] px-3 py-2 text-xs text-gray-300">{skill}</li>)}
+              </ul>
+            </article>
           ))}
         </div>
       </div>

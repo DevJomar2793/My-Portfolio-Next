@@ -6,17 +6,21 @@ import Tools from "./component/tools/page";
 import Projects from "./component/projects/page";
 import Contacts from "./component/contacts/page";
 import Footer from "./component/footer/page";
+import MotionController from "./component/motion-controller";
 
 export default function Profile() {
   return (
     <>
+      <MotionController />
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Tools />
-      <Projects />
-      <Contacts />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Tools />
+        <Projects />
+        <Contacts />
+      </main>
       <Footer />
     </>
   );

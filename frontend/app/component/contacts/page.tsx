@@ -2,100 +2,45 @@
 
 import { useState } from "react";
 
-const MailIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-  </svg>
-);
+const emailAddress = "jomarcerrado2793@gmail.com";
 
 export default function Contacts() {
-  const [formData, setFormData] = useState({
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ email: "", message: "" });
+  const [attempted, setAttempted] = useState(false);
+  const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!formData.email || !formData.message) return;
-
-    // Using a mailto link is the simplest way to send an email without a backend.
-    // Replace the email address with your actual email if needed.
-    const mailtoLink = `mailto:jomarcerrado2793@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(
-      formData.email,
-    )}&body=${encodeURIComponent(
-      formData.message + "\n\nFrom: " + formData.email,
-    )}`;
-    window.location.href = mailtoLink;
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setAttempted(true);
+    if (!emailIsValid || !formData.message.trim()) return;
+    const subject = encodeURIComponent(`Portfolio contact from ${formData.email}`);
+    const body = encodeURIComponent(`${formData.message}\n\nFrom: ${formData.email}`);
+    window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
   };
+
   return (
-    <section
-      id="contact"
-      className="py-16 md:py-24 relative z-10 bg-[#0a0c13] border-t border-white/5 font-sans"
-    >
-      <div className="max-w-xl mx-auto px-6 relative">
-        {/* Glow behind form */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] bg-violet-600/10 blur-[100px] rounded-full pointer-events-none -z-10"></div>
-
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center p-4 glass rounded-2xl text-violet-400 mb-6 border border-white/10">
-            <MailIcon />
-          </div>
-          <h3 className="text-4xl font-bold tracking-tight text-white mb-4">
-            Get in Touch
-          </h3>
-          <p className="text-gray-400 text-lg font-light">
-            I&apos;m currently open for new opportunities. Let&apos;s work
-            together!
-          </p>
+    <section id="contact" className="border-t border-white/5 bg-[#0b0e14]/80 py-20 md:py-28">
+      <div data-reveal className="mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-[.8fr_1.2fr] md:px-6">
+        <div data-reveal-item>
+          <span className="section-label">Contact</span>
+          <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">Let&apos;s build something useful.</h2>
+          <p className="mt-5 max-w-md leading-7 text-gray-400">I&apos;m currently open to new opportunities and collaborations. Send a note and your email app will prepare the message.</p>
+          <a href={`mailto:${emailAddress}`} className="mt-7 inline-flex break-all text-sm font-medium text-violet-400 transition hover:text-violet-300">{emailAddress} ↗</a>
         </div>
-
-        <form
-          className="glass cursor-pointer p-6 md:p-8 rounded-4xl border border-white/10 shadow-2xl space-y-6"
-          onSubmit={handleSubmit}
-        >
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">
-              Email Address
-            </label>
-            <input
-              type="email"
-              placeholder="hello@example.com"
-              className="w-full p-4 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all font-light"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-            />
+        <form data-reveal-item onSubmit={handleSubmit} noValidate className="rounded-2xl border border-white/10 bg-[#121214] p-6 md:p-8">
+          <h3 className="mb-7 text-xl font-semibold text-white">Send a message</h3>
+          <div>
+            <label htmlFor="contact-email" className="mb-2 block text-sm font-medium text-gray-300">Your email</label>
+            <input id="contact-email" name="email" type="email" autoComplete="email" required aria-invalid={attempted && !emailIsValid} aria-describedby={attempted && !emailIsValid ? "email-error" : undefined} value={formData.email} onChange={(event) => setFormData({ ...formData, email: event.target.value })} placeholder="you@example.com" className="w-full rounded-lg border border-white/10 bg-black/25 p-4 text-white placeholder:text-gray-600 focus:border-violet-400 focus:outline-none" />
+            {attempted && !emailIsValid && <p id="email-error" role="alert" className="mt-2 text-sm text-red-300">Enter a valid email address.</p>}
           </div>
-
-          <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-gray-400 uppercase tracking-widest ml-1">
-              Message
-            </label>
-            <textarea
-              placeholder="Tell me about your project..."
-              rows={4}
-              className="w-full p-4 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all font-light resize-none"
-              value={formData.message}
-              onChange={(e) =>
-                setFormData({ ...formData, message: e.target.value })
-              }
-            ></textarea>
+          <div className="mt-6">
+            <label htmlFor="contact-message" className="mb-2 block text-sm font-medium text-gray-300">Message</label>
+            <textarea id="contact-message" name="message" rows={5} required aria-invalid={attempted && !formData.message.trim()} aria-describedby={attempted && !formData.message.trim() ? "message-error" : undefined} value={formData.message} onChange={(event) => setFormData({ ...formData, message: event.target.value })} placeholder="Tell me about your idea..." className="w-full resize-y rounded-lg border border-white/10 bg-black/25 p-4 text-white placeholder:text-gray-600 focus:border-violet-400 focus:outline-none" />
+            {attempted && !formData.message.trim() && <p id="message-error" role="alert" className="mt-2 text-sm text-red-300">Write a short message.</p>}
           </div>
-
-          <button className="w-full bg-violet-600 hover:bg-violet-700 text-white font-medium py-4 rounded-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] active:scale-[0.98] focus:outline-none flex justify-center items-center gap-2 mt-2">
-            Send Message
-          </button>
+          <button type="submit" className="interactive-button mt-7 min-h-12 w-full rounded-lg bg-violet-500 px-6 text-sm font-semibold text-white hover:bg-violet-400">Send message <span className="button-arrow inline-block">→</span></button>
+          <p className="mt-4 text-center text-xs text-gray-500">This opens your default email application. No data is stored here.</p>
         </form>
       </div>
     </section>
