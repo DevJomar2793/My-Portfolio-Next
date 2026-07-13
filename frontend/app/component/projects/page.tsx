@@ -48,6 +48,13 @@ export default function Projects() {
       color: "from-blue-500/20 to-cyan-500/20",
     },
     {
+      title: "887 Cafe Project",
+      tech: ["Next.js", "FastAPI", "PostgreSQL"],
+      desc: "887 Cafe Landing Page",
+      link: "https://887-cafe-next.vercel.app/",
+      color: "from-amber-500/20 to-orange-500/20",
+    },
+    {
       title: "Photobooth System",
       tech: ["Vue.js", "FastAPI"],
       desc: "Interactive Photo Booth",
