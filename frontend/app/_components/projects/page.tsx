@@ -58,7 +58,7 @@ const projects: Project[] = [
     title: "Lawfirm App",
     tech: ["Next.js"],
     desc: "A client portal designed for a modern legal practice.",
-    link: "lawfirm-app-next.vercel.app",
+    link: "https://lawfirm-app-next.vercel.app/",
     accent: "from-blue-400/15 to-cyan-500/[.02]",
   },
   {
