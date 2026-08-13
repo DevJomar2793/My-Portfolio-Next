@@ -145,7 +145,7 @@ export default function Projects() {
               key={project.title}
               className={`project-product-card project-${project.accent}`}
             >
-              <div className="project-image-wrap">
+              <div className="project-image-wrap relative">
                 <Image
                   src={project.image}
                   alt={project.imageAlt}
