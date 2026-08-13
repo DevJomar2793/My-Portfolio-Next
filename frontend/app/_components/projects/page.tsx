@@ -56,45 +56,10 @@ const projects: Project[] = [
     tech: ["Vue.js", "FastAPI"],
     desc: "An interactive web-based photo booth experience.",
     link: "https://photobooth-app-omega.vercel.app/",
-<<<<<<< HEAD
-    accent: "from-cyan-400/15 to-blue-500/[.02]",
-  },
-  {
-    title: "SCA Sitemap",
-    tech: ["Vue.js", "FastAPI"],
-    desc: "A dynamic sitemap generator for streamlined site management.",
-    link: "https://sca-sitemap-vue.vercel.app/",
-    accent: "from-fuchsia-400/15 to-violet-500/[.02]",
-  },
-  {
-    title: "SCA Hardware Inventory",
-    tech: ["Vue.js", "FastAPI"],
-    desc: "An inventory system for tracking and managing hardware assets.",
-    link: "https://sca-hardware-inventory-vue.vercel.app/",
-    accent: "from-amber-400/15 to-orange-500/[.02]",
-  },
-  {
-    title: "Lawfirm App",
-    tech: ["Next.js"],
-    desc: "A client portal designed for a modern legal practice.",
-<<<<<<< HEAD:frontend/app/component/projects/page.tsx
-    link: "https://lawfirm-app-next.vercel.app",
-=======
-    link: "https://lawfirm-app-next.vercel.app/",
->>>>>>> dev:frontend/app/_components/projects/page.tsx
-    accent: "from-blue-400/15 to-cyan-500/[.02]",
-  },
-  {
-    title: "Project Management System",
-    tech: ["Next.js", "FastAPI", "PostgreSQL"],
-    desc: "A full-stack workspace for coordinating projects and teams.",
-    accent: "from-violet-400/15 to-cyan-500/[.02]",
-=======
     codeLink: "https://github.com/DevJomar2793/Photobooth-System-Next",
     image: "/project-photobooth.png",
     imageAlt: "Photobooth System website preview",
     accent: "violet",
->>>>>>> dev
   },
 ];
 
