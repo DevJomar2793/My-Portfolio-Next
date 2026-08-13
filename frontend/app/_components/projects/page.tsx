@@ -1,43 +1,62 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 type Project = {
   title: string;
+  number: string;
   tech: string[];
   desc: string;
   link?: string;
+  codeLink?: string;
+  image: string;
+  imageAlt: string;
   accent: string;
+  status?: string;
 };
 
 const projects: Project[] = [
   {
     title: "SupahBowl",
-    tech: ["Next.js"],
+    number: "01",
+    tech: ["Next.js", "Tailwind CSS"],
     desc: "A modern food website with a bold, customer-friendly experience.",
     link: "https://supah-bowl-project.vercel.app/",
-    accent: "from-cyan-400/15 to-cyan-500/[.02]",
+    codeLink: "https://github.com/DevJomar2793/Supahbowl-System-Next",
+    image: "/project-supahbowl.png",
+    imageAlt: "SupahBowl website preview",
+    accent: "cyan",
   },
   {
     title: "Adamos Fresh Eggs",
-    tech: ["Next.js"],
+    number: "02",
+    tech: ["Next.js", "TypeScript"],
     desc: "A focused landing page for a local fresh-egg business.",
-    link: "https://afe-web-app.vercel.app/",
-    accent: "from-emerald-400/15 to-emerald-500/[.02]",
+    link: "https://adamosfresheggs.vercel.app/",
+    codeLink: "https://github.com/DevJomar2793/AFE-Web-App",
+    image: "/project-adamos.svg",
+    imageAlt: "Adamos Fresh Eggs website preview",
+    accent: "violet",
   },
   {
     title: "887 Cafe",
-    tech: ["Next.js", "PostgreSQL", "FastAPI"],
+    number: "03",
+    tech: ["Next.js", "FastAPI", "PostgreSQL"],
     desc: "A full-stack coffee shop application for managing orders and inventory.",
     link: "https://887-cafe-next.vercel.app",
-    accent: "from-violet-400/15 to-violet-500/[.02]",
+    image: "/project-887-cafe.png",
+    imageAlt: "887 Cafe application preview",
+    accent: "blue",
   },
   {
     title: "Photobooth System",
+    number: "04",
     tech: ["Vue.js", "FastAPI"],
     desc: "An interactive web-based photo booth experience.",
     link: "https://photobooth-app-omega.vercel.app/",
+<<<<<<< HEAD
     accent: "from-cyan-400/15 to-blue-500/[.02]",
   },
   {
@@ -70,211 +89,199 @@ const projects: Project[] = [
     tech: ["Next.js", "FastAPI", "PostgreSQL"],
     desc: "A full-stack workspace for coordinating projects and teams.",
     accent: "from-violet-400/15 to-cyan-500/[.02]",
+=======
+    codeLink: "https://github.com/DevJomar2793/Photobooth-System-Next",
+    image: "/project-photobooth.png",
+    imageAlt: "Photobooth System website preview",
+    accent: "violet",
+>>>>>>> dev
   },
 ];
 
 const games = [
   {
     name: "Quiz Game",
-    note: "Test your knowledge",
+    note: "Test your knowledge across quick interactive questions.",
     link: "https://quiz-game-project-six.vercel.app",
+    icon: "?",
   },
   {
     name: "Rock, Paper, Scissors",
-    note: "Play the classic hand game",
+    note: "Play a polished version of the classic hand game.",
     link: "https://rps-app-nine.vercel.app",
+    icon: "✦",
   },
 ];
 
 export default function Projects() {
-  const [open, setOpen] = useState(false);
+  const [gamesOpen, setGamesOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!open) return;
+    if (!gamesOpen) return;
+
     document.body.style.overflow = "hidden";
-    const previous = document.activeElement as HTMLElement | null;
+    const previousFocus = document.activeElement as HTMLElement | null;
     const dialog = dialogRef.current;
     dialog?.querySelector<HTMLElement>("button, a")?.focus();
+
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-      if (event.key === "Tab" && dialog) {
-        const focusable = [
-          ...dialog.querySelectorAll<HTMLElement>("button, a"),
-        ];
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last?.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first?.focus();
-        }
+      if (event.key === "Escape") setGamesOpen(false);
+      if (event.key !== "Tab" || !dialog) return;
+
+      const focusable = [...dialog.querySelectorAll<HTMLElement>("button, a")];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
       }
     };
+
     window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKeyDown);
-      previous?.focus();
+      previousFocus?.focus();
     };
-  }, [open]);
+  }, [gamesOpen]);
 
   return (
-    <section id="projects" className="border-b border-slate-800/50 bg-[#090c12]/60 py-24 md:py-32">
-      <div className="page-shell">
-        <div data-reveal>
-          <span className="section-label">04 / Selected work</span>
-          <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-            <h2 className="max-w-2xl text-3xl font-semibold tracking-[-.035em] text-white md:text-5xl">
-              Things I&apos;ve designed, tested, and built.
-            </h2>
-            <p className="max-w-sm leading-7 text-slate-500">
-              A growing collection of frontend and full-stack web applications.
-            </p>
-          </div>
+    <section
+      id="projects"
+      className="cosmic-section cosmic-section-right py-24 md:py-32"
+    >
+      <div className="section-stars" aria-hidden="true" />
+      <div className="page-shell relative z-10">
+        <div data-reveal className="section-heading section-heading-centered">
+          <span className="section-kicker">
+            <i />
+            04 · Selected projects
+          </span>
+          <h2>
+            Ideas transformed into
+            <br />
+            <span>working digital products.</span>
+          </h2>
+          <p>
+            Four selected applications that reflect my approach to interface
+            design, full-stack development, and quality.
+          </p>
         </div>
-        <div data-reveal className="grid gap-5 md:grid-cols-2">
-          {projects.map((project, index) => (
+
+        <div data-reveal className="mt-12 grid gap-6 lg:grid-cols-2">
+          {projects.map((project) => (
             <article
               data-reveal-item
               key={project.title}
-              className="project-card panel group relative overflow-hidden rounded-xl"
+              className={`project-product-card project-${project.accent}`}
             >
-              <div className="flex items-center justify-between border-b border-slate-700/40 bg-[#10151f] px-4 py-3 font-mono text-[9px] text-slate-600">
-                <span className="flex items-center gap-2"><span className="size-1.5 rounded-full bg-slate-600" />project_{String(index + 1).padStart(2, "0")}.tsx</span>
-                <span>{project.link ? "DEPLOYED" : "LOCAL"}</span>
-              </div>
-              <div
-                className={`project-preview relative flex h-32 items-end overflow-hidden bg-linear-to-br ${project.accent} p-5 sm:h-36`}
-              >
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(148,163,184,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,.06)_1px,transparent_1px)] [background-size:20px_20px]"
+              <div className="project-image-wrap">
+                <Image
+                  src={project.image}
+                  alt={project.imageAlt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="eager"
+                  className="object-cover object-top transition-transform duration-700"
                 />
-                <span className="relative font-mono text-4xl font-semibold tracking-[-.06em] text-white/10">
-                  {String(index + 1).padStart(2, "0")}
+                <div className="project-image-overlay" />
+                <span className="project-number">{project.number}</span>
+                <span className="project-status">
+                  <i
+                    className={project.link ? "status-dot" : "project-code-dot"}
+                  />
+                  {project.status ?? "Live product"}
                 </span>
-                <div className="relative ml-auto flex items-center gap-2 rounded border border-slate-700/60 bg-[#07090e]/70 px-3 py-1.5 font-mono text-[9px] uppercase tracking-wider text-slate-400">
-                  <span className={project.link ? "status-dot" : "size-1.5 rounded-full bg-amber-300"} />{project.link ? "Live" : "In development"}
-                </div>
               </div>
-              <div className="p-6">
+              <div className="project-content">
                 <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-lg font-semibold text-white">
-                    {project.title}
-                  </h3>
+                  <div>
+                    <span className="project-label">Featured build</span>
+                    <h3>{project.title}</h3>
+                  </div>
+                  <span className="project-arrow">↗</span>
+                </div>
+                <p>{project.desc}</p>
+                <ul aria-label="Technologies used">
+                  {project.tech.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <div className="project-actions">
                   {project.link && (
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`Open ${project.title} project`}
-                      className="interactive-button grid size-10 shrink-0 place-items-center rounded-md border border-slate-700/60 font-mono text-slate-500 hover:border-cyan-400/40 hover:bg-cyan-400/[.06] hover:text-cyan-300"
+                      className="neon-button neon-button-primary"
                     >
-                      <span className="button-arrow">↗</span>
+                      Live demo <span>↗</span>
+                    </a>
+                  )}
+                  {project.codeLink && (
+                    <a
+                      href={project.codeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="neon-button"
+                    >
+                      View code <span>↗</span>
                     </a>
                   )}
                 </div>
-                <p className="mt-4 min-h-12 text-sm leading-6 text-slate-500">
-                  {project.desc}
-                </p>
-                <ul
-                  aria-label="Technologies used"
-                  className="mt-6 flex flex-wrap gap-2"
-                >
-                  {project.tech.map((item) => (
-                    <li
-                      key={item}
-                      className="tech-pill"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </article>
           ))}
         </div>
-        <div
-          data-reveal
-          className="panel mt-5 flex flex-col items-start justify-between gap-7 rounded-xl p-7 md:flex-row md:items-center md:p-8"
-        >
-          <div>
-            <p className="font-mono text-[10px] uppercase tracking-[.18em] text-violet-300">Bonus directory</p>
-            <h3 className="mt-2 text-xl font-semibold text-white">
-              Need a quick break? Run a mini game.
-            </h3>
-            <p className="mt-2 text-sm text-slate-500">
-              Explore two small interactive games built with React and Next.js.
-            </p>
+
+        <article data-reveal className="game-launcher cosmic-card mt-6">
+          <div className="game-launcher-orbit" aria-hidden="true"><i /><i /><i /></div>
+          <div className="game-launcher-copy">
+            <span className="game-eyebrow"><i />Bonus playground</span>
+            <h3>Need a quick break? <span>Enter the mini-game arcade.</span></h3>
+            <p>Two small interactive games built with React and Next.js.</p>
           </div>
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="interactive-button min-h-12 shrink-0 rounded-md border border-violet-400/30 bg-violet-400/[.07] px-6 font-mono text-xs font-semibold text-violet-200 hover:bg-violet-400/15"
-          >
-            npm run play →
+          <div className="game-launcher-preview" aria-hidden="true">
+            <span>?</span><span>✦</span>
+          </div>
+          <button type="button" onClick={() => setGamesOpen(true)} className="neon-button neon-button-primary">
+            Play mini games <span className="button-arrow">→</span>
           </button>
-        </div>
+        </article>
       </div>
-      {open &&
-        createPortal(
-          <div
-            className="modal-backdrop fixed inset-0 z-[100] grid place-items-center bg-black/80 p-5 backdrop-blur-sm"
-            onMouseDown={(event) =>
-              event.target === event.currentTarget && setOpen(false)
-            }
-          >
-            <div
-              ref={dialogRef}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="games-title"
-              className="modal-dialog panel w-full max-w-md overflow-hidden rounded-xl shadow-2xl"
-            >
-              <div className="flex items-center justify-between border-b border-slate-700/40 bg-[#10151f] px-6 py-4">
-                <h2
-                  id="games-title"
-                  className="font-mono text-sm font-semibold text-white"
-                >
-                  Choose a game
-                </h2>
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  aria-label="Close games dialog"
-                  className="grid size-9 place-items-center rounded-md border border-slate-700/60 text-lg text-slate-500 hover:text-white"
-                >
-                  ×
-                </button>
+
+      {gamesOpen && createPortal(
+        <div className="modal-backdrop game-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && setGamesOpen(false)}>
+          <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="games-title" className="modal-dialog game-modal cosmic-card">
+            <div className="game-modal-stars" aria-hidden="true" />
+            <div className="game-modal-header">
+              <div>
+                <span className="game-eyebrow"><i />Mini-game arcade</span>
+                <h2 id="games-title">Choose your game</h2>
+                <p>Pick a challenge and play in a new tab.</p>
               </div>
-              <div className="space-y-3 p-6">
-                {games.map((game) => (
-                  <a
-                    key={game.name}
-                    href={game.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-lg border border-slate-700/50 bg-slate-900/40 p-4 transition hover:border-violet-400/40 hover:bg-violet-400/[.07]"
-                  >
-                    <span>
-                      <strong className="block font-medium text-white">
-                        {game.name}
-                      </strong>
-                      <span className="mt-1 block text-sm text-slate-500">
-                        {game.note}
-                      </span>
-                    </span>
-                    <span className="font-mono text-violet-300" aria-hidden="true">↗</span>
-                  </a>
-                ))}
-              </div>
+              <button type="button" onClick={() => setGamesOpen(false)} aria-label="Close games dialog" className="game-modal-close">×</button>
             </div>
-          </div>,
-          document.body,
-        )}
+            <div className="game-list">
+              {games.map((game, index) => (
+                <a key={game.name} href={game.link} target="_blank" rel="noopener noreferrer" className="game-option">
+                  <span className="game-option-number">0{index + 1}</span>
+                  <span className="game-option-icon">{game.icon}</span>
+                  <span className="game-option-copy"><strong>{game.name}</strong><small>{game.note}</small></span>
+                  <span className="game-option-arrow">↗</span>
+                </a>
+              ))}
+            </div>
+            <div className="game-modal-footer"><span className="status-dot" />Both games are ready to launch</div>
+          </div>
+        </div>,
+        document.body,
+      )}
     </section>
   );
 }
