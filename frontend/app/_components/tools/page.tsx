@@ -1,33 +1,116 @@
+const stages = [
+  {
+    number: "01",
+    title: "Understand",
+    body: "Clarify the problem, user, and constraints before choosing the solution.",
+    icon: "◎",
+  },
+  {
+    number: "02",
+    title: "Build",
+    body: "Use modern frameworks and AI assistance to turn ideas into working software.",
+    icon: "</>",
+  },
+  {
+    number: "03",
+    title: "Validate",
+    body: "Test behavior, APIs, edge cases, and usability with a quality-first mindset.",
+    icon: "✓",
+  },
+  {
+    number: "04",
+    title: "Ship",
+    body: "Deploy, observe, and keep improving the experience after launch.",
+    icon: "↗",
+  },
+];
+
 const tools = [
-  { command: "test", title: "IDE & Testing", items: ["AntiGravity", "Postman"], color: "text-emerald-300" },
-  { command: "assist", title: "AI Workflow", items: ["Claude", "Codex", "GitHub Copilot", "Gemini"], color: "text-violet-300" },
-  { command: "deploy", title: "Deployment", items: ["Vercel", "Render"], color: "text-cyan-300" },
-  { command: "commit", title: "Version Control", items: ["Git", "GitHub"], color: "text-amber-300" },
+  {
+    title: "IDE, Terminal & Testing Tools",
+    items: ["AntiGravity", "Postman", "Warp Terminal"],
+    color: "cyan",
+  },
+  {
+    title: "AI Workflow",
+    items: ["Claude", "Codex", "GitHub Copilot", "Gemini"],
+    color: "violet",
+  },
+  { title: "Deployment", items: ["Vercel", "Render", "Docker"], color: "blue" },
+  { title: "Version Control", items: ["GitHub"], color: "cyan" },
 ];
 
 export default function Tools() {
   return (
-    <section id="tools" className="border-b border-slate-800/50 py-24 md:py-32">
-      <div data-reveal className="page-shell grid gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
-        <div>
-          <span className="section-label">03 / Workflow</span>
-          <h2 className="max-w-md text-3xl font-semibold tracking-[-.035em] text-white md:text-5xl">Tools that help me ship.</h2>
-          <p className="mt-6 max-w-sm leading-7 text-slate-500">A focused toolkit for designing, testing, collaborating, and deploying modern software.</p>
-        </div>
-        <div className="panel overflow-hidden rounded-xl">
-          <div className="flex items-center gap-3 border-b border-slate-700/40 bg-[#10151f] px-5 py-4">
-            <span className="font-mono text-xs text-cyan-300">⌘</span><span className="font-mono text-xs text-slate-500">Search commands and tools...</span><span className="ml-auto rounded border border-slate-700 px-2 py-1 font-mono text-[9px] text-slate-600">ESC</span>
+    <section
+      id="tools"
+      className="cosmic-section cosmic-section-left py-24 md:py-32"
+    >
+      <div className="section-stars" aria-hidden="true" />
+      <div data-reveal className="page-shell relative z-10">
+        <div className="section-heading">
+          <span className="section-kicker">
+            <i />
+            03 · AI-assisted development
+          </span>
+          <div className="grid gap-5 lg:grid-cols-[1fr_.75fr] lg:items-end">
+            <h2>
+              AI accelerates the work.
+              <br />
+              <span>Judgment shapes the outcome.</span>
+            </h2>
+            <p>
+              I pair AI tools with hands-on development and testing to explore
+              faster, solve complex problems, and deliver better user
+              experiences.
+            </p>
           </div>
-          <div className="divide-y divide-slate-800/70 p-2">
-            {tools.map((group, index) => (
-              <article data-reveal-item key={group.title} className="group grid gap-3 rounded-lg px-4 py-4 hover:bg-slate-800/40 sm:grid-cols-[2rem_1fr_1fr] sm:items-center">
-                <span className="hidden font-mono text-[10px] text-slate-700 sm:block">0{index + 1}</span>
-                <div><h3 className="text-sm font-medium text-slate-200">{group.title}</h3><p className={`mt-1 font-mono text-[10px] ${group.color}`}>$ workflow --{group.command}</p></div>
-                <ul className="flex flex-wrap gap-2 sm:justify-end">{group.items.map((item) => <li key={item} className="tech-pill">{item}</li>)}</ul>
+        </div>
+
+        <div className="mt-12 grid gap-5 lg:grid-cols-[1.1fr_.9fr]">
+          <article className="cosmic-card workflow-card p-6 md:p-8">
+            <div className="card-topline">
+              <span>
+                <i className="status-dot" /> Product workflow
+              </span>
+              <small>Human-led · AI-assisted</small>
+            </div>
+            <ol className="workflow-list">
+              {stages.map((stage, index) => (
+                <li key={stage.title} data-reveal-item>
+                  <span className="workflow-number">{stage.number}</span>
+                  <span className="workflow-icon">{stage.icon}</span>
+                  <div>
+                    <h3>{stage.title}</h3>
+                    <p>{stage.body}</p>
+                  </div>
+                  {index < stages.length - 1 && (
+                    <i className="workflow-line" aria-hidden="true" />
+                  )}
+                </li>
+              ))}
+            </ol>
+          </article>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            {tools.map((group) => (
+              <article
+                data-reveal-item
+                key={group.title}
+                className={`cosmic-card tool-row tool-${group.color}`}
+              >
+                <div>
+                  <span className="tool-spark">✦</span>
+                  <h3>{group.title}</h3>
+                </div>
+                <ul>
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
-          <div className="border-t border-slate-700/40 bg-[#0a0e15] px-5 py-3 font-mono text-[9px] text-slate-600">4 workflows &nbsp;·&nbsp; all systems ready</div>
         </div>
       </div>
     </section>
