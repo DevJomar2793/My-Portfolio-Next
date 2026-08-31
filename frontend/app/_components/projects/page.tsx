@@ -20,7 +20,7 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Adamos Fresh Eggs",
-    number: "02",
+    number: "01",
     tech: ["Next.js", "TypeScript"],
     desc: "A focused landing page for a local fresh-egg business.",
     link: "https://adamosfresheggs.vercel.app/",
@@ -32,10 +32,10 @@ const projects: Project[] = [
 
   {
     title: "Photobooth System",
-    number: "04",
+    number: "02",
     tech: ["Vue.js", "FastAPI"],
     desc: "An interactive web-based photo booth experience.",
-    link: "https://photobooth-app-omega.vercel.app/",
+    link: "https://photobooth-system-next.vercel.app/",
     codeLink: "https://github.com/DevJomar2793/Photobooth-System-Next",
     image: "/project-photobooth.png",
     imageAlt: "Photobooth System website preview",
