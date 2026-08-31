@@ -19,17 +19,6 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "SupahBowl",
-    number: "01",
-    tech: ["Next.js", "Tailwind CSS"],
-    desc: "A modern food website with a bold, customer-friendly experience.",
-    link: "https://supah-bowl-project.vercel.app/",
-    codeLink: "https://github.com/DevJomar2793/Supahbowl-System-Next",
-    image: "/project-supahbowl.png",
-    imageAlt: "SupahBowl website preview",
-    accent: "cyan",
-  },
-  {
     title: "Adamos Fresh Eggs",
     number: "02",
     tech: ["Next.js", "TypeScript"],
@@ -40,16 +29,7 @@ const projects: Project[] = [
     imageAlt: "Adamos Fresh Eggs website preview",
     accent: "violet",
   },
-  {
-    title: "887 Cafe",
-    number: "03",
-    tech: ["Next.js", "FastAPI", "PostgreSQL"],
-    desc: "A full-stack coffee shop application for managing orders and inventory.",
-    link: "https://887-cafe-next.vercel.app",
-    image: "/project-887-cafe.png",
-    imageAlt: "887 Cafe application preview",
-    accent: "blue",
-  },
+
   {
     title: "Photobooth System",
     number: "04",
@@ -205,48 +185,96 @@ export default function Projects() {
         </div>
 
         <article data-reveal className="game-launcher cosmic-card mt-6">
-          <div className="game-launcher-orbit" aria-hidden="true"><i /><i /><i /></div>
+          <div className="game-launcher-orbit" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </div>
           <div className="game-launcher-copy">
-            <span className="game-eyebrow"><i />Bonus playground</span>
-            <h3>Need a quick break? <span>Enter the mini-game arcade.</span></h3>
+            <span className="game-eyebrow">
+              <i />
+              Bonus playground
+            </span>
+            <h3>
+              Need a quick break? <span>Enter the mini-game arcade.</span>
+            </h3>
             <p>Two small interactive games built with React and Next.js.</p>
           </div>
           <div className="game-launcher-preview" aria-hidden="true">
-            <span>?</span><span>✦</span>
+            <span>?</span>
+            <span>✦</span>
           </div>
-          <button type="button" onClick={() => setGamesOpen(true)} className="neon-button neon-button-primary">
+          <button
+            type="button"
+            onClick={() => setGamesOpen(true)}
+            className="neon-button neon-button-primary"
+          >
             Play mini games <span className="button-arrow">→</span>
           </button>
         </article>
       </div>
 
-      {gamesOpen && createPortal(
-        <div className="modal-backdrop game-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && setGamesOpen(false)}>
-          <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="games-title" className="modal-dialog game-modal cosmic-card">
-            <div className="game-modal-stars" aria-hidden="true" />
-            <div className="game-modal-header">
-              <div>
-                <span className="game-eyebrow"><i />Mini-game arcade</span>
-                <h2 id="games-title">Choose your game</h2>
-                <p>Pick a challenge and play in a new tab.</p>
+      {gamesOpen &&
+        createPortal(
+          <div
+            className="modal-backdrop game-modal-backdrop"
+            onMouseDown={(event) =>
+              event.target === event.currentTarget && setGamesOpen(false)
+            }
+          >
+            <div
+              ref={dialogRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="games-title"
+              className="modal-dialog game-modal cosmic-card"
+            >
+              <div className="game-modal-stars" aria-hidden="true" />
+              <div className="game-modal-header">
+                <div>
+                  <span className="game-eyebrow">
+                    <i />
+                    Mini-game arcade
+                  </span>
+                  <h2 id="games-title">Choose your game</h2>
+                  <p>Pick a challenge and play in a new tab.</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setGamesOpen(false)}
+                  aria-label="Close games dialog"
+                  className="game-modal-close"
+                >
+                  ×
+                </button>
               </div>
-              <button type="button" onClick={() => setGamesOpen(false)} aria-label="Close games dialog" className="game-modal-close">×</button>
+              <div className="game-list">
+                {games.map((game, index) => (
+                  <a
+                    key={game.name}
+                    href={game.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="game-option"
+                  >
+                    <span className="game-option-number">0{index + 1}</span>
+                    <span className="game-option-icon">{game.icon}</span>
+                    <span className="game-option-copy">
+                      <strong>{game.name}</strong>
+                      <small>{game.note}</small>
+                    </span>
+                    <span className="game-option-arrow">↗</span>
+                  </a>
+                ))}
+              </div>
+              <div className="game-modal-footer">
+                <span className="status-dot" />
+                Both games are ready to launch
+              </div>
             </div>
-            <div className="game-list">
-              {games.map((game, index) => (
-                <a key={game.name} href={game.link} target="_blank" rel="noopener noreferrer" className="game-option">
-                  <span className="game-option-number">0{index + 1}</span>
-                  <span className="game-option-icon">{game.icon}</span>
-                  <span className="game-option-copy"><strong>{game.name}</strong><small>{game.note}</small></span>
-                  <span className="game-option-arrow">↗</span>
-                </a>
-              ))}
-            </div>
-            <div className="game-modal-footer"><span className="status-dot" />Both games are ready to launch</div>
-          </div>
-        </div>,
-        document.body,
-      )}
+          </div>,
+          document.body,
+        )}
     </section>
   );
 }
