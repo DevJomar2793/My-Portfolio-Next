@@ -302,15 +302,12 @@ export default function Projects() {
               aria-modal="true"
               aria-labelledby="apk-title"
               aria-describedby="apk-description"
-              className="modal-dialog game-modal cosmic-card"
+              className="modal-dialog apk-modal cosmic-card"
             >
-              <div className="game-modal-stars" aria-hidden="true" />
-              <div className="game-modal-header">
+              <div className="apk-modal-header">
+                <span className="apk-modal-icon" aria-hidden="true">↓</span>
                 <div>
-                  <span className="game-eyebrow">
-                    <i />
-                    Android download
-                  </span>
+                  <span className="apk-modal-eyebrow">Android download</span>
                   <h2 id="apk-title">Before you download</h2>
                   <p id="apk-description">
                     Please review these details before downloading AFE Mobile.
@@ -325,11 +322,22 @@ export default function Projects() {
                   ×
                 </button>
               </div>
-              <div className="download-notice">
-                <p>This APK is for Android phones only.</p>
-                <p>After installation, the app opens to its login screen.</p>
-                <p>I can&apos;t provide a test account for this app.</p>
-                <div className="download-notice-actions">
+              <div className="apk-modal-content">
+                <ul className="apk-notice-list">
+                  <li>
+                    <strong>Android only</strong>
+                    <span>This APK is for Android phones only.</span>
+                  </li>
+                  <li>
+                    <strong>Login required</strong>
+                    <span>After installation, the app opens to its login screen.</span>
+                  </li>
+                  <li>
+                    <strong>No test account</strong>
+                    <span>I can&apos;t provide a test account for this app.</span>
+                  </li>
+                </ul>
+                <div className="apk-modal-actions">
                   <button
                     type="button"
                     onClick={() => setOpenModal(null)}
@@ -343,7 +351,7 @@ export default function Projects() {
                     onClick={() => setOpenModal(null)}
                     className="neon-button neon-button-primary"
                   >
-                    Download APK anyway <span>↓</span>
+                    Download APK anyway <span className="button-arrow">↓</span>
                   </a>
                 </div>
               </div>
