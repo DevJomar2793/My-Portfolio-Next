@@ -481,6 +481,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .game-option-arrow { color: #777d91; transition: transform .2s, color .2s; }
 .game-option:hover .game-option-arrow { transform: translate(2px,-2px); color: #78e1ff; }
 .game-modal-footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: .55rem; border-top: 1px solid rgba(139,92,246,.12); padding: .85rem; color: #656a7e; font-family: var(--font-geist-mono); font-size: .5rem; }
+.download-notice { position: relative; z-index: 1; display: grid; gap: .8rem; padding: 1.7rem; color: #aab0c3; font-size: .78rem; line-height: 1.7; }
+.download-notice-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: .7rem; }
+.download-notice-actions .neon-button { min-height: 2.55rem; padding: .5rem 1rem; font-size: .65rem; }
 
 /* Contact */
 .contact-section { background: radial-gradient(circle at 50% 50%, rgba(84,43,182,.15), transparent 35rem), linear-gradient(180deg,#050512,#070616); }

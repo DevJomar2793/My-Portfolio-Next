@@ -49,7 +49,7 @@ export default function Hero() {
               I&apos;m <span className="gradient-name">Jomar Cerrado</span>
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-              QA tester and full stack developer passionate about building
+              QA tester and Software Engineer passionate about building
               intelligent, reliable web experiences with modern tools and a
               quality-first mindset.
             </p>

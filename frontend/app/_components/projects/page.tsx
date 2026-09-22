@@ -11,6 +11,7 @@ interface Project {
   desc: string;
   link?: string;
   codeLink?: string;
+  apkDownload?: string;
   image: string;
   imageAlt: string;
   accent: string;
@@ -22,9 +23,10 @@ const projects: Project[] = [
     title: "Adamos Fresh Eggs",
     number: "01",
     tech: ["Next.js", "TypeScript"],
-    desc: "A focused landing page for a local fresh-egg business.",
+    desc: "A focused landing page and Android companion app for a local fresh-egg business.",
     link: "https://adamosfresheggs.vercel.app/",
     codeLink: "https://github.com/DevJomar2793/AFE-Web-App",
+    apkDownload: "/downloads/AFE-Mobile-v2.0.00.apk",
     image: "/project-adamos.svg",
     imageAlt: "Adamos Fresh Eggs website preview",
     accent: "violet",
@@ -58,12 +60,14 @@ const games = [
   },
 ];
 
+type ModalName = "games" | "apk" | null;
+
 export default function Projects() {
-  const [gamesOpen, setGamesOpen] = useState(false);
+  const [openModal, setOpenModal] = useState<ModalName>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!gamesOpen) return;
+    if (!openModal) return;
 
     document.body.style.overflow = "hidden";
     const previousFocus = document.activeElement as HTMLElement | null;
@@ -71,7 +75,7 @@ export default function Projects() {
     dialog?.querySelector<HTMLElement>("button, a")?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setGamesOpen(false);
+      if (event.key === "Escape") setOpenModal(null);
       if (event.key !== "Tab" || !dialog) return;
 
       const focusable = [...dialog.querySelectorAll<HTMLElement>("button, a")];
@@ -93,7 +97,7 @@ export default function Projects() {
       window.removeEventListener("keydown", onKeyDown);
       previousFocus?.focus();
     };
-  }, [gamesOpen]);
+  }, [openModal]);
 
   return (
     <section
@@ -178,6 +182,15 @@ export default function Projects() {
                       View code <span>↗</span>
                     </a>
                   )}
+                  {project.apkDownload && (
+                    <button
+                      type="button"
+                      onClick={() => setOpenModal("apk")}
+                      className="neon-button"
+                    >
+                      Download APK <span>↓</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </article>
@@ -206,7 +219,7 @@ export default function Projects() {
           </div>
           <button
             type="button"
-            onClick={() => setGamesOpen(true)}
+            onClick={() => setOpenModal("games")}
             className="neon-button neon-button-primary"
           >
             Play mini games <span className="button-arrow">→</span>
@@ -214,12 +227,12 @@ export default function Projects() {
         </article>
       </div>
 
-      {gamesOpen &&
+      {openModal === "games" &&
         createPortal(
           <div
             className="modal-backdrop game-modal-backdrop"
             onMouseDown={(event) =>
-              event.target === event.currentTarget && setGamesOpen(false)
+              event.target === event.currentTarget && setOpenModal(null)
             }
           >
             <div
@@ -241,7 +254,7 @@ export default function Projects() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setGamesOpen(false)}
+                  onClick={() => setOpenModal(null)}
                   aria-label="Close games dialog"
                   className="game-modal-close"
                 >
@@ -270,6 +283,69 @@ export default function Projects() {
               <div className="game-modal-footer">
                 <span className="status-dot" />
                 Both games are ready to launch
+              </div>
+            </div>
+          </div>,
+          document.body,
+        )}
+      {openModal === "apk" &&
+        createPortal(
+          <div
+            className="modal-backdrop game-modal-backdrop"
+            onMouseDown={(event) =>
+              event.target === event.currentTarget && setOpenModal(null)
+            }
+          >
+            <div
+              ref={dialogRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="apk-title"
+              aria-describedby="apk-description"
+              className="modal-dialog game-modal cosmic-card"
+            >
+              <div className="game-modal-stars" aria-hidden="true" />
+              <div className="game-modal-header">
+                <div>
+                  <span className="game-eyebrow">
+                    <i />
+                    Android download
+                  </span>
+                  <h2 id="apk-title">Before you download</h2>
+                  <p id="apk-description">
+                    Please review these details before downloading AFE Mobile.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setOpenModal(null)}
+                  aria-label="Close APK download dialog"
+                  className="game-modal-close"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="download-notice">
+                <p>This APK is for Android phones only.</p>
+                <p>After installation, the app opens to its login screen.</p>
+                <p>I can&apos;t provide a test account for this app.</p>
+                <div className="download-notice-actions">
+                  <button
+                    type="button"
+                    onClick={() => setOpenModal(null)}
+                    className="neon-button"
+                  >
+                    Cancel
+                  </button>
+                  <a
+                    href="/downloads/AFE-Mobile-v2.0.00.apk"
+                    download
+                    onClick={() => setOpenModal(null)}
+                    className="neon-button neon-button-primary"
+                  >
+                    Download APK anyway <span>↓</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>,
