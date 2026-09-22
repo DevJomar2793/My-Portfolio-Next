@@ -82,29 +82,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   }
 }
 
-.brand-mark {
-  position: relative;
-  display: grid;
-  width: 2.25rem;
-  height: 2.25rem;
-  place-items: center;
-  color: #8feaff;
-  font-weight: 800;
+.brand-logo {
+  width: 5rem;
+  height: auto;
+  object-fit: contain;
 }
-
-.brand-mark::before,
-.brand-mark::after {
-  position: absolute;
-  inset: 5px 1px;
-  content: "";
-  border: 1.5px solid currentColor;
-  border-radius: 50%;
-  transform: rotate(58deg);
-  opacity: .85;
-}
-
-.brand-mark::after { transform: rotate(-58deg); color: #9b6cff; }
-.brand-mark span { position: relative; z-index: 1; font-size: .7rem; }
 
 .nav-pill {
   padding: .38rem;

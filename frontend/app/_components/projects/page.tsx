@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-type Project = {
+interface Project {
   title: string;
   number: string;
   tech: string[];
@@ -15,7 +15,7 @@ type Project = {
   imageAlt: string;
   accent: string;
   status?: string;
-};
+}
 
 const projects: Project[] = [
   {

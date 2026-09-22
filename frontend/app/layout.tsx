@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Jomar Cerrado | QA Tester & Full Stack Developer",
   description:
     "Portfolio of Jomar Cerrado, a QA tester and AI-assisted full stack developer building reliable modern web applications.",
+  icons: {
+    icon: "/dev-jomar-logo.png",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
