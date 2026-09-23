@@ -31,18 +31,6 @@ const projects: Project[] = [
     imageAlt: "Adamos Fresh Eggs website preview",
     accent: "violet",
   },
-
-  {
-    title: "Photobooth System",
-    number: "02",
-    tech: ["Vue.js", "FastAPI"],
-    desc: "An interactive web-based photo booth experience.",
-    link: "https://photobooth-system-next.vercel.app/",
-    codeLink: "https://github.com/DevJomar2793/Photobooth-System-Next",
-    image: "/project-photobooth.png",
-    imageAlt: "Photobooth System website preview",
-    accent: "violet",
-  },
 ];
 
 const games = [
@@ -305,7 +293,9 @@ export default function Projects() {
               className="modal-dialog apk-modal cosmic-card"
             >
               <div className="apk-modal-header">
-                <span className="apk-modal-icon" aria-hidden="true">↓</span>
+                <span className="apk-modal-icon" aria-hidden="true">
+                  ↓
+                </span>
                 <div>
                   <span className="apk-modal-eyebrow">Android download</span>
                   <h2 id="apk-title">Before you download</h2>
@@ -330,11 +320,15 @@ export default function Projects() {
                   </li>
                   <li>
                     <strong>Login required</strong>
-                    <span>After installation, the app opens to its login screen.</span>
+                    <span>
+                      After installation, the app opens to its login screen.
+                    </span>
                   </li>
                   <li>
                     <strong>No test account</strong>
-                    <span>I can&apos;t provide a test account for this app.</span>
+                    <span>
+                      I can&apos;t provide a test account for this app.
+                    </span>
                   </li>
                 </ul>
                 <div className="apk-modal-actions">
