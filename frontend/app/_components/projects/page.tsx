@@ -31,6 +31,17 @@ const projects: Project[] = [
     imageAlt: "Adamos Fresh Eggs website preview",
     accent: "violet",
   },
+  {
+    title: "School Photobooth",
+    number: "02",
+    tech: ["FastAPI", "React", "PostgreSQL"],
+    desc: "A web application for managing school events and photo booth sessions.",
+    link: "https://school-photobooth.vercel.app/",
+    codeLink: "https://github.com/DevJomar2793/photobooth-next",
+    image: "/project-school-photobooth.svg",
+    imageAlt: "School Photobooth website preview",
+    accent: "violet",
+  },
 ];
 
 const games = [
