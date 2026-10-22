@@ -60,13 +60,13 @@ const games = [
   {
     name: "Quiz Game",
     note: "Test your knowledge across quick interactive questions.",
-    link: "",
+    link: "https://quiz-game-project-six.vercel.app/",
     icon: "?",
   },
   {
     name: "Rock, Paper, Scissors",
     note: "Play a polished version of the classic hand game.",
-    link: "",
+    link: "https://rps-app-nine.vercel.app/",
     icon: "✦",
   },
 ];
