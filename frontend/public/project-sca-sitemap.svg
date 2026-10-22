@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">SCA Screen Finder project preview</title>
+  <desc id="desc">A dark blue screen finder interface with a large search bar and cards for screen details, file references, and navigation steps.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#031942"/>
+      <stop offset=".5" stop-color="#0750ad"/>
+      <stop offset="1" stop-color="#03163d"/>
+    </linearGradient>
+    <linearGradient id="searchButton" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#38bdf8"/>
+      <stop offset=".52" stop-color="#287bf0"/>
+      <stop offset="1" stop-color="#1748b7"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#287bf0"/>
+    </linearGradient>
+    <radialGradient id="topGlow" cx="50%" cy="0%" r="75%">
+      <stop stop-color="#1567eb" stop-opacity=".76"/>
+      <stop offset="1" stop-color="#1567eb" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="searchShadow" x="-20%" y="-60%" width="140%" height="220%">
+      <feDropShadow dx="0" dy="24" stdDeviation="25" flood-color="#000d2d" flood-opacity=".5"/>
+    </filter>
+    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <rect width="1440" height="900" fill="url(#background)"/>
+  <rect width="1440" height="650" fill="url(#topGlow)"/>
+
+  <!-- Decorative corner rings -->
+  <g fill="none" stroke="#2883f2" opacity=".3">
+    <circle cx="1398" cy="-8" r="180" stroke-width="2"/>
+    <circle cx="1398" cy="-8" r="130" stroke-width="48" opacity=".45"/>
+    <circle cx="-45" cy="850" r="190" stroke-width="2"/>
+    <circle cx="-45" cy="850" r="137" stroke-width="48" opacity=".35"/>
+  </g>
+
+  <!-- Brand -->
+  <g transform="translate(72 42)" font-family="Arial, Helvetica, sans-serif">
+    <rect width="64" height="64" rx="20" fill="#287bf0" fill-opacity=".25" stroke="#7dd3fc" stroke-width="2"/>
+    <circle cx="29" cy="28" r="13" fill="none" stroke="#ffffff" stroke-width="4"/>
+    <path d="m39 38 10 10" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+    <text x="83" y="43" fill="#ffffff" font-size="28" font-weight="700">SCA Screen Finder</text>
+  </g>
+
+  <!-- Hero -->
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="720" y="190" fill="#7dd3fc" font-size="16" font-weight="700" letter-spacing="4">SCREEN NAVIGATION, SIMPLIFIED</text>
+    <rect x="678" y="215" width="84" height="7" rx="4" fill="url(#accentLine)"/>
+    <rect x="685" y="214" width="70" height="9" rx="5" fill="#38bdf8" opacity=".32" filter="url(#softGlow)"/>
+    <text x="720" y="315" fill="#ffffff" font-size="68" font-weight="700" letter-spacing="-3">
+      Find the right screen. <tspan fill="#38bdf8">Faster.</tspan>
+    </text>
+    <text x="720" y="365" fill="#dbeafe" font-size="24">Search a screen number to view its description, file details,</text>
+    <text x="720" y="398" fill="#dbeafe" font-size="24">and step-by-step navigation instructions.</text>
+  </g>
+
+  <!-- Dot decoration -->
+  <g fill="#3181ea" opacity=".5">
+    <circle cx="178" cy="270" r="3"/><circle cx="202" cy="270" r="3"/><circle cx="226" cy="270" r="3"/><circle cx="250" cy="270" r="3"/><circle cx="274" cy="270" r="3"/>
+    <circle cx="178" cy="294" r="3"/><circle cx="202" cy="294" r="3"/><circle cx="226" cy="294" r="3"/><circle cx="250" cy="294" r="3"/><circle cx="274" cy="294" r="3"/>
+    <circle cx="178" cy="318" r="3"/><circle cx="202" cy="318" r="3"/><circle cx="226" cy="318" r="3"/><circle cx="250" cy="318" r="3"/><circle cx="274" cy="318" r="3"/>
+    <circle cx="178" cy="342" r="3"/><circle cx="202" cy="342" r="3"/><circle cx="226" cy="342" r="3"/><circle cx="250" cy="342" r="3"/><circle cx="274" cy="342" r="3"/>
+  </g>
+
+  <!-- Search -->
+  <g filter="url(#searchShadow)">
+    <rect x="274" y="447" width="892" height="96" rx="31" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+  </g>
+  <g transform="translate(316 477)" fill="none" stroke="#94a3b8" stroke-width="4" stroke-linecap="round">
+    <circle cx="20" cy="20" r="14"/>
+    <path d="m31 31 11 11"/>
+  </g>
+  <text x="382" y="507" fill="#94a3b8" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600">Enter screen number (e.g. 1024)</text>
+  <circle cx="1112" cy="495" r="34" fill="url(#searchButton)"/>
+  <path d="M1098 495h27m-10-11 11 11-11 11" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g transform="translate(575 575)" font-family="Arial, Helvetica, sans-serif">
+    <circle cx="12" cy="12" r="10" fill="none" stroke="#dbeafe" stroke-width="2"/>
+    <path d="M12 10v7m0-11v.5" stroke="#dbeafe" stroke-width="2" stroke-linecap="round"/>
+    <text x="34" y="18" fill="#dbeafe" font-size="17">Enter a screen number to get started</text>
+  </g>
+
+  <!-- Feature cards -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g transform="translate(204 648)">
+      <rect width="326" height="142" rx="22" fill="#071f56" fill-opacity=".58" stroke="#4c9bf4" stroke-opacity=".55"/>
+      <rect x="22" y="31" width="76" height="76" rx="20" fill="#2f7de1" fill-opacity=".72"/>
+      <path d="M48 50h21l12 12v27H48Z" fill="none" stroke="#dbeafe" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M69 50v13h12M57 72h15M57 81h15" fill="none" stroke="#dbeafe" stroke-width="3" stroke-linecap="round"/>
+      <text x="118" y="64" fill="#ffffff" font-size="21" font-weight="700">Screen details</text>
+      <text x="118" y="88" fill="#dbeafe" font-size="15">View screen description</text>
+      <text x="118" y="109" fill="#dbeafe" font-size="15">and key information</text>
+    </g>
+    <g transform="translate(557 648)">
+      <rect width="326" height="142" rx="22" fill="#071f56" fill-opacity=".58" stroke="#4c9bf4" stroke-opacity=".55"/>
+      <rect x="22" y="31" width="76" height="76" rx="20" fill="#6366f1" fill-opacity=".55"/>
+      <path d="M42 62h18l7 8h20v22H42Z" fill="none" stroke="#e0e7ff" stroke-width="3" stroke-linejoin="round"/>
+      <path d="m42 91 8-16h39l-7 16Z" fill="#6366f1" stroke="#e0e7ff" stroke-width="3" stroke-linejoin="round"/>
+      <text x="118" y="64" fill="#ffffff" font-size="21" font-weight="700">File references</text>
+      <text x="118" y="88" fill="#dbeafe" font-size="15">Check related files</text>
+      <text x="118" y="109" fill="#dbeafe" font-size="15">and locations</text>
+    </g>
+    <g transform="translate(910 648)">
+      <rect width="326" height="142" rx="22" fill="#071f56" fill-opacity=".58" stroke="#4c9bf4" stroke-opacity=".55"/>
+      <rect x="22" y="31" width="76" height="76" rx="20" fill="#14b8a6" fill-opacity=".52"/>
+      <path d="m44 62 45-17-19 44-8-18Z" fill="none" stroke="#ccfbf1" stroke-width="3" stroke-linejoin="round"/>
+      <text x="118" y="64" fill="#ffffff" font-size="21" font-weight="700">Navigation steps</text>
+      <text x="118" y="88" fill="#dbeafe" font-size="15">Get step-by-step</text>
+      <text x="118" y="109" fill="#dbeafe" font-size="15">instructions</text>
+    </g>
+  </g>
+
+  <path d="M72 845h1296" stroke="#7dd3fc" stroke-opacity=".3"/>
+  <text x="720" y="878" fill="#dbeafe" fill-opacity=".85" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" text-anchor="middle">Developed by <tspan fill="#ffffff" font-weight="700">DevJMR</tspan>  •  © 2026</text>
+</svg>
