@@ -1,44 +1,83 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
-  <title id="title">Adamos Fresh Eggs project preview</title>
-  <desc id="desc">A warm premium product mockup for the Adamos Fresh Eggs website.</desc>
+  <title id="title">Adamos Fresh Eggs website preview</title>
+  <desc id="desc">The Adamos Fresh Eggs homepage with a cream navigation bar, green farm landscape, fresh eggs, and the message A better morning starts at the farm.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#17122f"/><stop offset=".55" stop-color="#0b0b1c"/><stop offset="1" stop-color="#19102d"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop stop-color="#66e4ff"/><stop offset="1" stop-color="#a66bff"/>
-    </linearGradient>
-    <radialGradient id="egg" cx="35%" cy="25%">
-      <stop stop-color="#fff8d8"/><stop offset="1" stop-color="#decda2"/>
-    </radialGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="28"/></filter>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9db98e"/><stop offset=".58" stop-color="#d7c89d"/><stop offset="1" stop-color="#e8d3a1"/></linearGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6f8a50"/><stop offset="1" stop-color="#2e542f"/></linearGradient>
+    <linearGradient id="heroOverlay" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#0b2011" stop-opacity=".97"/><stop offset=".46" stop-color="#0d2614" stop-opacity=".84"/><stop offset=".78" stop-color="#0d2614" stop-opacity=".25"/><stop offset="1" stop-color="#0d2614" stop-opacity=".08"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#6a4228"/><stop offset=".45" stop-color="#9b6740"/><stop offset="1" stop-color="#54331f"/></linearGradient>
+    <radialGradient id="egg" cx="34%" cy="24%"><stop stop-color="#fffdf2"/><stop offset=".72" stop-color="#efe2bd"/><stop offset="1" stop-color="#cbb88a"/></radialGradient>
+    <radialGradient id="brownEgg" cx="34%" cy="24%"><stop stop-color="#f4d6a1"/><stop offset=".75" stop-color="#c39155"/><stop offset="1" stop-color="#8d6036"/></radialGradient>
+    <filter id="softShadow" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="16" stdDeviation="15" flood-color="#07150b" flood-opacity=".35"/></filter>
+    <filter id="blur"><feGaussianBlur stdDeviation="7"/></filter>
+    <clipPath id="heroClip"><rect y="86" width="1440" height="814"/></clipPath>
   </defs>
-  <rect width="1440" height="900" fill="url(#bg)"/>
-  <circle cx="1180" cy="140" r="230" fill="#6937d3" opacity=".18" filter="url(#glow)"/>
-  <circle cx="200" cy="760" r="280" fill="#28bed8" opacity=".09" filter="url(#glow)"/>
-  <g fill="#fff" opacity=".25">
-    <circle cx="95" cy="112" r="2"/><circle cx="328" cy="204" r="1.5"/><circle cx="840" cy="96" r="2"/><circle cx="1320" cy="420" r="1.5"/><circle cx="710" cy="780" r="2"/>
+
+  <!-- Navigation -->
+  <rect width="1440" height="86" fill="#f9f7f0"/>
+  <path d="M0 85.5h1440" stroke="#ded9ca"/>
+  <g transform="translate(62 13)" font-family="Arial, Helvetica, sans-serif">
+    <circle cx="30" cy="30" r="28" fill="#ffffff" stroke="#d9d5c7"/>
+    <path d="M18 37c1-12 7-20 16-20 8 0 14 8 13 20-1 8-7 14-15 14-9 0-15-6-14-14Z" fill="#f1dfb1" stroke="#173b24" stroke-width="2"/>
+    <path d="M22 19c6 3 13 3 20 0" fill="none" stroke="#a85620" stroke-width="3" stroke-linecap="round"/>
+    <text x="77" y="37" fill="#18331f" font-size="21" font-weight="900" letter-spacing="2.4">ADAMOS</text>
+    <text x="188" y="37" fill="#8a744a" font-size="21" font-weight="900" letter-spacing="2.4">FRESH EGGS</text>
   </g>
-  <g transform="translate(105 78)">
-    <rect width="1230" height="744" rx="34" fill="#080816" stroke="#8150dc" stroke-opacity=".45"/>
-    <rect x="1" y="1" width="1228" height="72" rx="33" fill="#100d25"/>
-    <circle cx="38" cy="36" r="7" fill="#f07c9a"/><circle cx="62" cy="36" r="7" fill="#f5c36a"/><circle cx="86" cy="36" r="7" fill="#65d6b0"/>
-    <text x="126" y="43" fill="#b4b0c7" font-family="Arial, sans-serif" font-size="18">adamos-fresh-eggs.com</text>
-    <rect x="70" y="122" width="1090" height="548" rx="26" fill="#11101f" stroke="#6e5aa4" stroke-opacity=".25"/>
-    <text x="125" y="178" fill="#ffffff" font-family="Arial, sans-serif" font-weight="700" font-size="28">ADAMOS</text>
-    <text x="285" y="178" fill="#9b96ad" font-family="Arial, sans-serif" font-size="17">Fresh Eggs</text>
-    <rect x="924" y="145" width="170" height="48" rx="24" fill="url(#accent)" opacity=".9"/>
-    <text x="970" y="176" fill="#080815" font-family="Arial, sans-serif" font-weight="700" font-size="15">Order fresh</text>
-    <text x="125" y="315" fill="#ffffff" font-family="Arial, sans-serif" font-weight="700" font-size="64">Farm fresh.</text>
-    <text x="125" y="386" fill="url(#accent)" font-family="Arial, sans-serif" font-weight="700" font-size="64">Every morning.</text>
-    <text x="125" y="448" fill="#9b97aa" font-family="Arial, sans-serif" font-size="21">A focused digital storefront for a local fresh-egg business.</text>
-    <rect x="125" y="492" width="174" height="54" rx="27" fill="#7449db"/>
-    <text x="172" y="526" fill="#fff" font-family="Arial, sans-serif" font-weight="700" font-size="16">Explore products</text>
-    <g transform="translate(770 250)">
-      <ellipse cx="105" cy="166" rx="82" ry="132" fill="url(#egg)" transform="rotate(-14 105 166)"/>
-      <ellipse cx="230" cy="140" rx="82" ry="132" fill="url(#egg)" transform="rotate(10 230 140)"/>
-      <ellipse cx="342" cy="190" rx="82" ry="132" fill="url(#egg)" transform="rotate(22 342 190)"/>
-      <ellipse cx="226" cy="275" rx="82" ry="132" fill="#f4e9c7" transform="rotate(-4 226 275)"/>
+  <g fill="#405142" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">
+    <text x="778" y="51">Mission &amp; Vision</text><text x="944" y="51">Products</text><text x="1052" y="51">Customer Orders</text>
+  </g>
+  <g transform="translate(1250 20)" font-family="Arial, Helvetica, sans-serif">
+    <rect width="132" height="46" fill="none" stroke="#173b24"/>
+    <path d="M18 16h18v15H18Zm0 1 9 7 9-7" fill="none" stroke="#173b24" stroke-width="2" stroke-linejoin="round"/>
+    <text x="48" y="29" fill="#173b24" font-size="15" font-weight="800">Contact</text>
+  </g>
+
+  <!-- Farm landscape -->
+  <g clip-path="url(#heroClip)">
+    <rect y="86" width="1440" height="814" fill="url(#sky)"/>
+    <circle cx="1166" cy="232" r="95" fill="#fff4c8" opacity=".7" filter="url(#blur)"/>
+    <path d="M0 426c180-76 328-63 490-23 169 42 282 32 430-26 176-69 344-51 520 13v510H0Z" fill="#718957"/>
+    <path d="M0 512c221-87 380-69 569 2 154 58 303 31 444-20 158-57 290-35 427 34v372H0Z" fill="url(#field)"/>
+    <path d="M744 494c88 60 212 112 355 146 96 23 211 37 341 40v126c-140-9-270-35-382-74-148-52-270-122-368-206Z" fill="#91a766" opacity=".75"/>
+
+    <!-- Barn and trees -->
+    <g transform="translate(1012 321)" filter="url(#softShadow)">
+      <rect x="0" y="62" width="171" height="121" fill="#7b3827"/><path d="M-17 66 85 4l104 62Z" fill="#4b2f22"/><rect x="67" y="105" width="44" height="78" fill="#302119"/>
+      <path d="M0 82h171M29 62v121M142 62v121" stroke="#aa6042" stroke-width="4" opacity=".7"/><rect x="118" y="18" width="14" height="45" fill="#493327"/>
+    </g>
+    <g fill="#244827"><circle cx="1248" cy="384" r="69"/><circle cx="1304" cy="407" r="59"/><circle cx="1339" cy="368" r="77"/><rect x="1296" y="405" width="17" height="95" fill="#4a3722"/><circle cx="900" cy="405" r="48"/><circle cx="939" cy="414" r="54"/><rect x="921" y="423" width="13" height="70" fill="#4a3722"/></g>
+
+    <!-- Farm table and bowl -->
+    <path d="M624 700 1440 625v275H570Z" fill="url(#wood)"/>
+    <g stroke="#c18b5c" stroke-width="3" opacity=".35"><path d="m655 738 785-73M621 794l819-76M588 852l852-82"/></g>
+    <g transform="translate(905 505)" filter="url(#softShadow)">
+      <ellipse cx="239" cy="240" rx="247" ry="64" fill="#2c1d14" opacity=".42"/>
+      <path d="M23 124h430c-14 137-84 202-214 202S38 259 23 124Z" fill="#d7c29c" stroke="#6d5337" stroke-width="6"/>
+      <path d="M49 150h378" stroke="#f0dfbd" stroke-width="13" opacity=".7"/><ellipse cx="238" cy="123" rx="216" ry="51" fill="#8c6b43"/><ellipse cx="238" cy="115" rx="205" ry="43" fill="#b69463"/>
+      <ellipse cx="101" cy="78" rx="50" ry="77" fill="url(#egg)" transform="rotate(-22 101 78)"/><ellipse cx="178" cy="64" rx="51" ry="81" fill="url(#brownEgg)" transform="rotate(-10 178 64)"/>
+      <ellipse cx="260" cy="58" rx="52" ry="83" fill="url(#egg)" transform="rotate(5 260 58)"/><ellipse cx="343" cy="74" rx="50" ry="78" fill="url(#brownEgg)" transform="rotate(18 343 74)"/>
+      <ellipse cx="412" cy="100" rx="45" ry="68" fill="url(#egg)" transform="rotate(27 412 100)"/><ellipse cx="139" cy="137" rx="50" ry="75" fill="url(#brownEgg)" transform="rotate(-13 139 137)"/>
+      <ellipse cx="221" cy="130" rx="52" ry="80" fill="url(#egg)"/><ellipse cx="309" cy="137" rx="50" ry="76" fill="url(#brownEgg)" transform="rotate(11 309 137)"/>
+    </g>
+    <rect y="86" width="1440" height="814" fill="url(#heroOverlay)"/>
+  </g>
+
+  <!-- Hero copy -->
+  <g transform="translate(92 221)" font-family="Arial, Helvetica, sans-serif">
+    <text x="0" y="0" fill="#ffd59c" font-size="17" font-weight="900" letter-spacing="3">ADAMOS FRESH EGGS</text>
+    <text x="0" y="91" fill="#ffffff" font-size="72" font-weight="900" letter-spacing="-3">A better morning</text>
+    <text x="0" y="169" fill="#ffffff" font-size="72" font-weight="900" letter-spacing="-3">starts at the farm.</text>
+    <text x="0" y="229" fill="#f6edd9" font-size="22">Pasture-raised eggs, gathered with care and packed</text>
+    <text x="0" y="260" fill="#f6edd9" font-size="22">by a family farm for nearby tables.</text>
+    <g transform="translate(0 305)">
+      <rect width="213" height="60" fill="#a85620"/><text x="28" y="38" fill="#ffffff" font-size="17" font-weight="900">Customer orders</text><path d="M173 30h18m-7-7 8 7-8 7" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="229" width="167" height="60" fill="none" stroke="#f4ead8" stroke-opacity=".75"/><text x="261" y="38" fill="#ffffff" font-size="17" font-weight="900">View our eggs</text>
+    </g>
+    <path d="M0 421h620" stroke="#ffffff" stroke-opacity=".22"/>
+    <g transform="translate(0 464)" fill="#f4ead8" font-size="16" font-weight="700">
+      <path d="m0-5 7 7 13-15" fill="none" stroke="#f4ead8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><text x="31" y="2">Pasture access</text>
+      <path d="m180-5 7 7 13-15" fill="none" stroke="#f4ead8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><text x="211" y="2">Clean feed</text>
+      <path d="m342-5 7 7 13-15" fill="none" stroke="#f4ead8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><text x="373" y="2">Packed on farm</text>
     </g>
   </g>
 </svg>

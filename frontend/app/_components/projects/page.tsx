@@ -42,19 +42,31 @@ const projects: Project[] = [
     imageAlt: "School Photobooth website preview",
     accent: "violet",
   },
+
+  {
+    title: "Company Screen Finder Tool",
+    number: "03",
+    tech: ["FastAPI", "Next", "PostgreSQL"],
+    desc: "A web application that helps you find the exact screen page of the company website.",
+    link: "https://sca-sitemap.vercel.app/",
+    codeLink: "https://github.com/DevJomar2793/SCA-Sitemap-Next",
+    image: "/project-sca-sitemap.svg",
+    imageAlt: "Company Screen Finder website preview",
+    accent: "violet",
+  },
 ];
 
 const games = [
   {
     name: "Quiz Game",
     note: "Test your knowledge across quick interactive questions.",
-    link: "https://quiz-game-project-six.vercel.app",
+    link: "",
     icon: "?",
   },
   {
     name: "Rock, Paper, Scissors",
     note: "Play a polished version of the classic hand game.",
-    link: "https://rps-app-nine.vercel.app",
+    link: "",
     icon: "✦",
   },
 ];
