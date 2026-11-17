@@ -51,7 +51,7 @@ export default function Tools() {
         <div className="section-heading">
           <span className="section-kicker">
             <i />
-            03 · AI-assisted development
+            03 · AI Application Engineer
           </span>
           <div className="grid gap-5 lg:grid-cols-[1fr_.75fr] lg:items-end">
             <h2>

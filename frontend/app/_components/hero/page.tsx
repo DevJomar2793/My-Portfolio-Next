@@ -40,7 +40,7 @@ export default function Hero() {
         <div className="grid min-h-152.5 items-center gap-12 lg:grid-cols-[1.03fr_.97fr] lg:gap-16">
           <div className="hero-copy pt-10 lg:pt-0">
             <div className="eyebrow">
-              <span aria-hidden="true">✦</span> AI-assisted full stack developer{" "}
+              <span aria-hidden="true">✦</span> AI Application Engineer{" "}
               <span className="status-dot" />
             </div>
             <h1 className="mt-7 text-5xl font-bold leading-[1.03] tracking-[-.05em] text-white sm:text-6xl xl:text-[4.7rem]">
