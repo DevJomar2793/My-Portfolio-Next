@@ -43,7 +43,7 @@ export default function Hero() {
               <span aria-hidden="true">✦</span> AI Application Engineer{" "}
               <span className="status-dot" />
             </div>
-            <h1 className="mt-7 text-5xl font-bold leading-[1.03] tracking-[-.05em] text-white sm:text-6xl xl:text-[4.7rem]">
+            <h1 className="mt-7 text-5xl font-bold leading-[1.03] tracking- text-white sm:text-6xl xl:text-[4.7rem]">
               Hi there,
               <br />
               I&apos;m <span className="gradient-name">Jomar Cerrado</span>
